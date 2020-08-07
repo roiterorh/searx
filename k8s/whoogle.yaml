@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: whoogle
-        image: okteto.dev/searx:latest
+        image: registry.cloud.okteto.net/roiterorh/searx:latest
 
         imagePullPolicy: Always
 
