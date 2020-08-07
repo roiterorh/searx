@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: whoogle
-        image: benbusby/whoogle-search
+        image: okteto.dev/searx:latest
 
         imagePullPolicy: Always
 
