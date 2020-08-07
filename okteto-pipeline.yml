@@ -1,6 +1,7 @@
 icon: https://apps.okteto.com/movies/icon.png
 deploy:
-  - okteto build -t okteto.dev/searx:${OKTETO_GIT_COMMIT} .
+  # - okteto build -t okteto.dev/searx:${OKTETO_GIT_COMMIT} .
+  - kubectl apply -f k8s
 #   - helm upgrade --install movies chart --set tag=${OKTETO_GIT_COMMIT}
 # devs:
 #   - api/okteto.yml
