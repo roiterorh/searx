@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: whoogle
+  name: searx
   
 spec:
 
   revisionHistoryLimit: 1
   selector:
     matchLabels:
-      app: whoogle
+      app: searx
   template:
     metadata:
       labels:
-        app: whoogle
+        app: searx
     spec:
       containers:
-      - name: whoogle
+      - name: searx
         image: registry.cloud.okteto.net/roiterorh/searx:latest
 
         imagePullPolicy: Always
@@ -23,29 +23,13 @@ spec:
 
         ports:
         - containerPort: 8080
-        # envFrom:
-        #   - secretRef:
-        #       name: whoogle
-
-      # tolerations:
-      #   - key: "lisa"
-      #     operator: "Equal"
-      #     value: "true"
-      #     effect: "NoExecute"
-
-      # nodeSelector: 
-      #   app: lisa
-
-      # imagePullSecrets:
-      # - name: gcr-roihunter-master-key
-
 
 ---
 
 apiVersion: v1
 kind: Service
 metadata:
-  name: whoogle
+  name: searx
   annotations:
     dev.okteto.com/auto-ingress: "true"
 spec:
@@ -53,4 +37,4 @@ spec:
     - protocol: TCP
       port: 8080
   selector:
-    app: whoogle
+    app: searx
