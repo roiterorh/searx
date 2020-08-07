@@ -22,7 +22,7 @@ spec:
 
 
         ports:
-        - containerPort: 5000
+        - containerPort: 8080
         # envFrom:
         #   - secretRef:
         #       name: whoogle
@@ -51,6 +51,6 @@ metadata:
 spec:
   ports:
     - protocol: TCP
-      port: 5000
+      port: 8080
   selector:
     app: whoogle
