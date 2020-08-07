@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: whoogle
+  
+spec:
+
+  revisionHistoryLimit: 1
+  selector:
+    matchLabels:
+      app: whoogle
+  template:
+    metadata:
+      labels:
+        app: whoogle
+    spec:
+      containers:
+      - name: whoogle
+        image: benbusby/whoogle-search
+
+        imagePullPolicy: Always
+
+
+        ports:
+        - containerPort: 5000
+        # envFrom:
+        #   - secretRef:
+        #       name: whoogle
+
+      # tolerations:
+      #   - key: "lisa"
+      #     operator: "Equal"
+      #     value: "true"
+      #     effect: "NoExecute"
+
+      # nodeSelector: 
+      #   app: lisa
+
+      # imagePullSecrets:
+      # - name: gcr-roihunter-master-key
+
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: whoogle
+
+spec:
+  ports:
+    - protocol: TCP
+      port: 5000
+  selector:
+    app: whoogle
