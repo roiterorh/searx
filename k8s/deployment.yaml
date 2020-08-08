@@ -4,7 +4,7 @@ metadata:
   name: searx
   
 spec:
-
+  replicas: 8
   revisionHistoryLimit: 1
   selector:
     matchLabels:
